@@ -21,6 +21,8 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
+      migrations:
+        condition: service_completed_successfully
     ports:
       - "8000:8000"
   migrations:
@@ -35,7 +37,7 @@ services:
       postgres:
         condition: service_healthy
     command: >
-      sh -c "python3 manage.py migrate"
+      sh -c "python manage.py migrate"
   postgres:
     image: postgres:latest
     environment:
