@@ -21,23 +21,8 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
-      migrations:
-        condition: service_completed_successfully
     ports:
       - "8000:8000"
-  migrations:
-    image: popkov2012/graduate_work:$GITHUB_REF_NAME-$GITHUB_RUN_ID
-    environment:
-      POSTGRES_HOST: ${POSTGRES_HOST}
-      POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-      POSTGRES_DB: ${POSTGRES_DB}
-      SECRET_KEY: ${SECRET_KEY}
-    depends_on:
-      postgres:
-        condition: service_healthy
-    command: >
-      sh -c "python manage.py migrate"
   postgres:
     image: postgres:latest
     environment:
