@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'social_django',
     'goals',
     'django_filters',
+    'bot',
 ]
 
 MIDDLEWARE = [
@@ -158,6 +159,8 @@ SOCIAL_AUTH_VK_OAUTH2_SECRET = env.str('SOCIAL_AUTH_VK_OAUTH2_SECRET')
 SOCIAL_AUTH_URL_NAMESPACE = 'social'
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/logged-in/'
 SOCIAL_AUTH_LOGIN_ERROR_URL = '/login-error/'
+
+TG_BOT_TOKEN = env.str('TG_BOT_TOKEN')
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
