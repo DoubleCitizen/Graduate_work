@@ -22,6 +22,7 @@ services:
       SOCIAL_AUTH_VK_OAUTH2_KEY: ${SOCIAL_AUTH_VK_OAUTH2_KEY}
       SOCIAL_AUTH_VK_OAUTH2_SECRET: ${SOCIAL_AUTH_VK_OAUTH2_SECRET}
       HOST: ${HOST}
+      TG_BOT_TOKEN: ${TG_BOT_TOKEN}
     depends_on:
       postgres:
         condition: service_healthy
@@ -42,6 +43,7 @@ services:
       SOCIAL_AUTH_VK_OAUTH2_KEY: ${SOCIAL_AUTH_VK_OAUTH2_KEY}
       SOCIAL_AUTH_VK_OAUTH2_SECRET: ${SOCIAL_AUTH_VK_OAUTH2_SECRET}
       HOST: ${HOST}
+      TG_BOT_TOKEN: ${TG_BOT_TOKEN}
     depends_on:
       postgres:
         condition: service_healthy
@@ -61,6 +63,7 @@ services:
       SOCIAL_AUTH_VK_OAUTH2_KEY: ${SOCIAL_AUTH_VK_OAUTH2_KEY}
       SOCIAL_AUTH_VK_OAUTH2_SECRET: ${SOCIAL_AUTH_VK_OAUTH2_SECRET}
       HOST: ${HOST}
+      TG_BOT_TOKEN: ${TG_BOT_TOKEN}
     command: >
       sh -c "python3 manage.py runbot"
     depends_on:
