@@ -33,12 +33,6 @@ class Command(BaseCommand):
             for item in res.result:
                 self.offset = item.update_id + 1
                 if hasattr(item, "message"):
-                    # if category is None:
-
-                    # if category and status == -1:
-                    #     # self.create_goal(item.message, tg_user, category)
-                    #     # is_running = False
-                    #     status = 0
                     try:
                         if item.message.text == "/cancel":
                             self.tg_client.send_message(
@@ -79,8 +73,6 @@ class Command(BaseCommand):
                             )
                         elif status == 3:
                             description = item.message.text
-                            # print(
-                            #     f"category={category}\ndescription={description}\ndue_date={due_date}\ntg_user.user={tg_user.user}\nitem.message.text={item.message.text}")
                             goal = Goal.objects.create(
                                 category=category,
                                 description=description,
@@ -93,7 +85,6 @@ class Command(BaseCommand):
                                 text=f"Цель: {title} успешно создана!"
                             )
 
-                            # /boards/8/categories/5/goals?goal=6
                             board_id = category.board.id
                             category_id = category.id
                             goal_id = goal.id
@@ -114,7 +105,6 @@ class Command(BaseCommand):
                         )
                         is_running = False
                         status = 0
-
 
     def get_goals(self, msg: Message, tg_user: TgUser):
         goals = Goal.objects.filter(
