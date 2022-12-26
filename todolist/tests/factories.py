@@ -3,17 +3,6 @@ from django.contrib.auth import get_user_model
 
 from goals.models import GoalCategory, Board, BoardParticipant, Goal, GoalComment
 
-USER_MODEL = get_user_model()
-
-
-# class UserFactory(factory.django.DjangoModelFactory):
-#     class Meta:
-#         model = USER_MODEL
-#
-#     username = factory.Faker('name')
-#     password = 'Test12345'
-#     email = factory.Faker('email')
-
 
 class BoardFactory(factory.django.DjangoModelFactory):
     class Meta:

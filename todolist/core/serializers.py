@@ -74,7 +74,7 @@ class UpdatePasswordSerializer(serializers.Serializer):
 
     def validate(self, attrs):
         """Проверка на верность ввода старого пароля"""
-        user = attrs['user']
+        user = self.instance
         if not user.check_password(attrs['old_password']):
             raise serializers.ValidationError({'old_password': 'incorrect password'})
 

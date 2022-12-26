@@ -20,19 +20,21 @@ def test_signup(auth_client):
     assert response.status_code == status.HTTP_201_CREATED
 
 
-# @pytest.mark.django_db
-# def test_update_password(auth_client, test_user):
-#     url = reverse('update_password')
-#     payload = {
-#         'new_password_repeat': 'test1234',
-#         'old_password': 'test1234',
-#     }
-#     response = auth_client.patch(
-#         path=url,
-#         data=payload
-#     )
-#
-#     assert response.status_code == status.HTTP_201_CREATED
+@pytest.mark.django_db
+def test_update_password(auth_client, test_user):
+    url = reverse('update_password')
+    payload = {
+        'new_password_repeat': 'test1234',
+        'new_password': 'test1234',
+        'old_password': 'test1234',
+        'user': test_user,
+    }
+    response = auth_client.patch(
+        path=url,
+        data=payload
+    )
+
+    assert response.status_code == status.HTTP_400_BAD_REQUEST
 
 
 @pytest.mark.django_db

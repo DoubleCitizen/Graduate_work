@@ -1,5 +1,4 @@
 import pytest
-from django.contrib.auth import get_user_model
 from django.urls import reverse
 from rest_framework import status
 
@@ -8,6 +7,24 @@ from rest_framework import status
 def test_retrieve_goal(auth_client, goal, date_now, category, board_participant):
     url = reverse('retrieve_goal', kwargs={'pk': goal.pk})
     response = auth_client.get(path=url)
+
+    assert response.status_code == status.HTTP_200_OK
+
+
+@pytest.mark.django_db
+def test_update_goal(auth_client, goal, date_now, category, board_participant, test_user):
+    url = reverse('retrieve_goal', kwargs={'pk': goal.pk})
+    payload = {
+        'title': 'New Goal',
+        'category': category.pk,
+        'description': 'This is a nice goal to have',
+        'due_date': date_now,
+        'user': test_user,
+    }
+    response = auth_client.patch(
+        path=url,
+        data=payload
+    )
 
     assert response.status_code == status.HTTP_200_OK
 

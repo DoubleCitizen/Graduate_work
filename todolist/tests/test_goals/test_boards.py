@@ -1,7 +1,8 @@
 import pytest
-from django.contrib.auth import get_user_model
 from django.urls import reverse
 from rest_framework import status
+
+from goals.models import Board
 
 
 @pytest.mark.django_db
@@ -34,3 +35,12 @@ def test_create_board(auth_client, board, test_user):
 
     assert response.status_code == status.HTTP_201_CREATED
     assert response_data['title'] == payload['title']
+
+
+@pytest.mark.django_db
+def test_create_board_db():
+    board, created = Board.objects.get_or_create(
+        title="gfdgdfgdf",
+    )
+
+    assert type(board) == type(Board())

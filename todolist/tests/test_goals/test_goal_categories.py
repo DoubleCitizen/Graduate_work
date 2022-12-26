@@ -13,6 +13,22 @@ def test_retrieve_goal_category(auth_client, goal, date_now, category, board_par
 
 
 @pytest.mark.django_db
+def test_update_goal_category(auth_client, goal, date_now, category, board_participant, board, test_user):
+    url = reverse('retrieve_goal_category', kwargs={'pk': goal.pk})
+    payload = {
+        'board': board.pk,
+        'title': 'super title',
+        'user': test_user,
+    }
+    response = auth_client.patch(
+        path=url,
+        data=payload
+    )
+
+    assert response.status_code == status.HTTP_200_OK
+
+
+@pytest.mark.django_db
 def test_list_goal_category(auth_client, goal, date_now, category, board_participant):
     url = reverse('list_goal_category')
     response = auth_client.get(path=url)

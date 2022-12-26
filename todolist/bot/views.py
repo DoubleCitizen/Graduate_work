@@ -9,6 +9,7 @@ from todolist.settings import TG_BOT_TOKEN
 
 
 class BotVerifyView(generics.UpdateAPIView):
+    """Вьюшка для связи бота с пользователем"""
     model = TgUser
     permission_classes = [IsAuthenticated]
     http_method_names = ['patch']
