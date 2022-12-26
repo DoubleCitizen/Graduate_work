@@ -10,7 +10,6 @@ class MessageFrom:
     is_bot: bool
     first_name: str | None
     last_name: str | None
-    username: str
 
     class Meta:
         unknown = EXCLUDE
@@ -20,7 +19,6 @@ class MessageFrom:
 class MessageChat:
     id: int
     first_name: str | None
-    username: str | None
     last_name: str | None
     type: str
     title: str | None
