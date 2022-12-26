@@ -5,7 +5,7 @@ from django.core.management import BaseCommand
 from bot.models import TgUser
 from bot.tg.client import TgClient
 from bot.tg.schemas import Message
-from todolist.settings import TG_BOT_TOKEN
+from todolist.settings import TG_BOT_TOKEN, HOST_URL
 from goals.models import Goal, GoalCategory
 
 
@@ -99,7 +99,7 @@ class Command(BaseCommand):
                             goal_id = goal.id
                             self.tg_client.send_message(
                                 chat_id=item.message.chat.id,
-                                text=f"http://localhost/boards/{board_id}/categories/{category_id}/goals?goal={goal_id}"
+                                text=f"http://{HOST_URL}/boards/{board_id}/categories/{category_id}/goals?goal={goal_id}"
                             )
 
                             is_running = False
