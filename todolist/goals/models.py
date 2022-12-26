@@ -98,7 +98,7 @@ class Goal(models.Model):
 class GoalComment(models.Model):
     class Meta:
         verbose_name = 'Комментарий'
-        verbose_name_plural = 'Коментарии'
+        verbose_name_plural = 'Комментарии'
 
     text = models.TextField(verbose_name='Текст')
     goal = models.ForeignKey(
