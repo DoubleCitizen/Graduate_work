@@ -21,6 +21,7 @@ services:
       POSTGRES_PORT: ${POSTGRES_PORT}
       SOCIAL_AUTH_VK_OAUTH2_KEY: ${SOCIAL_AUTH_VK_OAUTH2_KEY}
       SOCIAL_AUTH_VK_OAUTH2_SECRET: ${SOCIAL_AUTH_VK_OAUTH2_SECRET}
+      HOST: ${HOST}
     depends_on:
       postgres:
         condition: service_healthy
@@ -40,6 +41,7 @@ services:
       POSTGRES_PORT: ${POSTGRES_PORT}
       SOCIAL_AUTH_VK_OAUTH2_KEY: ${SOCIAL_AUTH_VK_OAUTH2_KEY}
       SOCIAL_AUTH_VK_OAUTH2_SECRET: ${SOCIAL_AUTH_VK_OAUTH2_SECRET}
+      HOST: ${HOST}
     depends_on:
       postgres:
         condition: service_healthy
@@ -58,6 +60,7 @@ services:
       POSTGRES_PORT: ${POSTGRES_PORT}
       SOCIAL_AUTH_VK_OAUTH2_KEY: ${SOCIAL_AUTH_VK_OAUTH2_KEY}
       SOCIAL_AUTH_VK_OAUTH2_SECRET: ${SOCIAL_AUTH_VK_OAUTH2_SECRET}
+      HOST: ${HOST}
     command: >
       sh -c "python3 manage.py runbot"
     depends_on:
